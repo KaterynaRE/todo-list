@@ -1,18 +1,16 @@
 import React, {useState} from 'react';
 import './monthListTask.css';
 
-const TaskItem = ({
-                      status,
-                      task,
-                      editingTask,
-                      setEditingTask,
-                      saveEdit,
-                      cancelEdit,
-                      deleteMonthTask,
-                      saveEditDayUodate,
-                      saveEditWeekUpdate,
-                      saveEditMonthUpdate
-                  }) => {
+const TaskItemMonth = ({
+                           status,
+                           task,
+                           editingTask,
+                           setEditingTask,
+                           cancelEdit,
+                           saveEditTask,
+                           deleteMonthTask,
+                           tasks
+                       }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -32,13 +30,12 @@ const TaskItem = ({
                         <strong>Priority</strong>: {task.priority}<br/>
                         <strong>Status</strong>: {task.status ? 'Not Completed' : 'Completed'}
                     </div>
-                    <button onClick={() => {
-                        status(task.id);
-                        deleteMonthTask(task.id);
-                    }} id="imgButtonCheckMonth">
-                        <input id='checkBoxCheckMonth' type='checkbox'/>
-                    </button>
                     <div className="imgIkonsMonth">
+                        <button onClick={() => {
+                            status(task.id);
+                        }} id="imgButtonCheckMonth">
+                            Toggle Status
+                        </button>
                         <button onClick={() => setEditingTask(task)} id="imgButtonEditMonth">
                             <img className="imgButtonEditMonth" src="/free-icon-edit-4007772.png" alt="edit"/>
                         </button>
@@ -88,10 +85,10 @@ const TaskItem = ({
                            })}/>
 
                     <button onClick={() => {
-                        saveEdit(editingTask);
-                        saveEditMonthUpdate(editingTask);
-                        saveEditWeekUpdate(editingTask);
-                        saveEditDayUodate(editingTask);
+                        saveEditTask(editingTask, 'tasks');
+                        saveEditTask(editingTask, 'day');
+                        saveEditTask(editingTask, 'week');
+                        saveEditTask(editingTask, 'month');
                     }}>Save
                     </button>
                     <button onClick={cancelEdit}>Cancel</button>
@@ -101,4 +98,4 @@ const TaskItem = ({
     );
 };
 
-export default TaskItem;
+export default TaskItemMonth;
