@@ -116,6 +116,6 @@ export function DayListTasks({
                     }
                 </ul>
             )}
-        < />
+        </>
     );
 }
