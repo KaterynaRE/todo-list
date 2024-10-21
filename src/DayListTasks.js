@@ -103,7 +103,7 @@ export function DayListTasks({
                                     }}>
                                     Toggle Status
                                 </button>
-                                {/*при кліку запускаємо оновити стейт для змін задач*/}
+                                {/*при кліку запускаємо оновити стейт для змін   задач*/}
                                 <button onClick={() => setEditingTask(task)} id="imgButtonEdit">
                                     <img className="imgButtonEdit" src="/free-icon-edit-4007772.png" alt="edit"/>
                                 </button>
